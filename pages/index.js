@@ -1,6 +1,6 @@
 import React, { Component, useCallback, useState } from 'react';
-import { Layout, Page, Button, Collapsible, TextContainer, Scrollable, Card, DisplayText, TextField, FormLayout } from '@shopify/polaris';
-import Link from 'next/link';
+import { Layout, Page, Button, FooterHelp, Frame, Scrollable, Card, Loading, TextField, FormLayout, Link } from '@shopify/polaris';
+
 class Index extends Component {
 
 	state = {
@@ -57,23 +57,25 @@ class Index extends Component {
 												</div>
 											);
 										})
-									) : (
-											<h3>Loading...</h3>
-										)}
+									) : (<h3>Retriving Data...</h3>)
+									}
 									<h1>{this.props.ProductName}</h1>
 								</p>
 							</Scrollable>
 						</Card>
 					</Layout.AnnotatedSection>
 					<Layout.AnnotatedSection title="Database Infomation" description="Search Product by ProductID in Databse">
-					<Card sectioned>
-						<FormLayout>
-						<TextField helpText = {<span>input id for Search</span>}></TextField>
-						<Button submit>Click for submit</Button>	
-						</FormLayout>
-						</Card>						
+						<Card sectioned>
+							<FormLayout>
+								<TextField helpText={<span>input id for Search</span>}></TextField>
+								<Button submit>Click for submit</Button>
+							</FormLayout>
+						</Card>
 					</Layout.AnnotatedSection>
 				</Layout>
+				<FooterHelp>
+					Learn more about <Link url="https://reactjs.org/docs/components-and-props.html">React Component Function</Link>.
+  				</FooterHelp>
 			</Page>
 		)
 	}
