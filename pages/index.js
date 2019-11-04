@@ -1,5 +1,6 @@
 import React, { Component, useCallback, useState } from 'react';
 import { Layout, Page, Button, FooterHelp, Frame, Scrollable, Card, Loading, TextField, FormLayout, Link } from '@shopify/polaris';
+import { ReactiveBase, CategorySearch } from '@appbaseio/reactivesearch';
 
 class Index extends Component {
 
@@ -71,6 +72,9 @@ class Index extends Component {
 								<Button submit>Click for submit</Button>
 							</FormLayout>
 						</Card>
+					</Layout.AnnotatedSection>
+					<Layout.AnnotatedSection>
+									<Link></Link>
 					</Layout.AnnotatedSection>
 				</Layout>
 				<FooterHelp>

@@ -4,6 +4,7 @@ import { AppProvider } from '@shopify/polaris';
 import { Provider } from '@shopify/app-bridge-react';
 import '@shopify/polaris/styles.css';
 import Cookies from 'js-cookie';
+import { ReactiveBase } from '@appbaseio/reactivesearch';
 
 class MyApp extends App {
     render() {
@@ -17,7 +18,7 @@ class MyApp extends App {
                 </Head>
                 <Provider config={config}>
                     <AppProvider>
-                        <Component {...pageProps}/>
+                        <Component {...pageProps} />
                     </AppProvider>
                 </Provider>
             </React.Fragment>

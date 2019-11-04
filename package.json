@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@appbaseio/reactivesearch": "^3.0.3",
     "@shopify/app-bridge-react": "^1.10.0",
     "@shopify/koa-shopify-auth": "^3.1.48",
     "@shopify/koa-shopify-graphql-proxy": "^3.2.1",
