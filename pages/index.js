@@ -10,7 +10,7 @@ class Index extends Component {
 	}
 
 	fetchProducts() {
-		fetch(`https://ea3866da.ngrok.io/api/products`).then(response => response.json())
+		fetch(`https://cda3a817.ngrok.io/api/products`).then(response => response.json())
 			.then(data => this.setState({
 				products: data,
 				isLoading: false,
@@ -23,7 +23,7 @@ class Index extends Component {
 	}
 
 	// fetchProdutbyID() {
-	// 	fetch(`https://ea3866da.ngrok.io/api/product/${id}`).then(response => response.json())
+	// 	fetch(`https://cda3a817.ngrok.io/api/product/${id}`).then(response => response.json())
 	// 		.then(data => this.setState({
 	// 			product: data,
 	// 			isLoadingornot: false,
