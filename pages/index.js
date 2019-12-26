@@ -1,6 +1,43 @@
 import React, { Component, useCallback, useState } from 'react';
 import { Layout, Page, Button, FooterHelp, Frame, Scrollable, Card, Loading, TextField, FormLayout, Link } from '@shopify/polaris';
-import { ReactiveBase, CategorySearch } from '@appbaseio/reactivesearch';
+import { Mutation, Query } from 'react-apollo';
+import { Context } from '@shopify/app-bridge-react'
+import gql from 'graphql-tag';
+
+const GetProducts = gql`
+query{
+	shop{
+	  name
+	}
+	products(first:10){
+	  edges{
+		node{
+		  id
+		  title
+		  description
+		  descriptionHtml
+		  variants(first:10){
+			edges{
+			  node{
+				id
+			  }
+			}
+		  }
+		  images(first:10){
+			edges{
+			  node{
+				id
+				originalSrc
+			  }
+			}
+		  }
+		}
+	  }
+	}
+  }
+`
+
+
 
 class Index extends Component {
 
@@ -23,21 +60,9 @@ class Index extends Component {
 		this.fetchProducts();
 	}
 
-	// fetchProdutbyID() {
-	// 	fetch(`https://cda3a817.ngrok.io/api/product/${id}`).then(response => response.json())
-	// 		.then(data => this.setState({
-	// 			product: data,
-	// 			isLoadingornot: false,
-	// 		}))
-	// 		.catch(error => this.setState({ error, isLoadingornot: false }));
-	// }
-
-	// componentDidMount(){
-	// 	this.fetchProdutbyID();
-	// }
-
 	render() {
 		const { isLoading, products } = this.state;
+
 
 		return (
 			<Page>
@@ -74,7 +99,19 @@ class Index extends Component {
 						</Card>
 					</Layout.AnnotatedSection>
 					<Layout.AnnotatedSection>
-									<Link></Link>
+						<Query query={GetProducts}>
+							{({data, loading, error}) => {
+								if(loading){return <div>Loading...</div>;}
+								if(error){return <div>{error.message}</div>;}
+								console.log(data);
+							}}
+						</Query>
+					</Layout.AnnotatedSection>
+					<Layout.AnnotatedSection>
+						{products.map(product => {
+							const { ProductID, ProductName, NumofProductInInventory } = product;
+						})
+						}
 					</Layout.AnnotatedSection>
 				</Layout>
 				<FooterHelp>
@@ -86,3 +123,22 @@ class Index extends Component {
 }
 
 export default Index;
+
+
+
+
+
+
+
+	// fetchProdutbyID() {
+	// 	fetch(`https://cda3a817.ngrok.io/api/product/${id}`).then(response => response.json())
+	// 		.then(data => this.setState({
+	// 			product: data,
+	// 			isLoadingornot: false,
+	// 		}))
+	// 		.catch(error => this.setState({ error, isLoadingornot: false }));
+	// }
+
+	// componentDidMount(){
+	// 	this.fetchProdutbyID();
+	// }

@@ -5,6 +5,15 @@ import { Provider } from '@shopify/app-bridge-react';
 import '@shopify/polaris/styles.css';
 import Cookies from 'js-cookie';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
+// import ApolloClient from 'apollo-boost'
+// import { ApolloProvider } from 'react-apollo'
+
+// const client = new ApolloClient({
+//     fetchOptions: {
+//         credentials: 'include'
+//     },
+// });
+
 
 class MyApp extends App {
     render() {
@@ -19,7 +28,10 @@ class MyApp extends App {
                 <Provider config={config}>
                     <AppProvider>
                         <Component {...pageProps} />
-                    </AppProvider>
+                        {/* <ApolloProvider client={client}>
+                            <Component {...pageProps}/>
+                        </ApolloProvider> */}
+                    </AppProvider> */
                 </Provider>
             </React.Fragment>
         );
